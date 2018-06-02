@@ -3,11 +3,12 @@
         <div class="card card-body">
             <h2 class="text-center mb-4">Sign-up</h2>
             {{#if hasErrors}}
-                <div class="alert alert-danger">
-                    {{# each messages }}
-                        <a class="close font-weight-light" data-dismiss="alert" href="#">×</a>{{ this }}
-                    {{/each}}
-                </div>
+                {{# each messages }}
+                    <div class="alert alert-danger">
+                        <a class="close font-weight-light" data-dismiss="alert" href="#">×</a>
+                        {{ this }}
+                    </div>
+                {{/each}}
             {{/if}}
             <form action="/user/signup" method="post">
                 <fieldset>
