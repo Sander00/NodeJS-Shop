@@ -1,0 +1,52 @@
+{{# if products }}
+    <table id="cart" class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{# each products }}
+            <tr>
+                <td data-th="Product" class="cart-product">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs">
+                            <img src="{{ this.item.imagePath }}" alt="..." class="img-responsive mw-100"/>
+                        </div>
+                        <div class="col-sm-10">
+                            <h4 class="nomargin">{{ this.item.title }}</h4>
+                            <p>{{ this.item.description }}</p>
+                        </div>
+                    </div>
+                </td>
+                <td data-th="Price">€{{ this.item.price }}</td>
+                <td data-th="Quantity" class="text-center">{{ this.qty }}</td>
+                <td data-th="Subtotal" class="text-center">€{{ this.price }}</td>
+                <td class="actions" data-th="">
+                    <button class="btn btn-info btn-sm"><i class="fas fa-minus"></i></button>
+                    <a class="btn btn-info btn-sm" href="/add-to-cart/{{ this.item._id }}"><i class="fas fa-plus"></i></a>
+                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td><a href="/" class="btn btn-info"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            <td colspan="2" class="hidden-xs"></td>
+            <td class="hidden-xs text-center"><strong>Total €{{ totalPrice }}</strong></td>
+            <td><a href="#" class="btn btn-primary btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+        </tfoot>
+    </table>
+{{else }}
+    <div class="col-md-12 col-sm-12 text-center pt-4">
+        <h3>No items in shopping cart</h3>
+        <a href="/">Continue shopping</a>
+    </div>
+{{/if}}
+

@@ -1,3 +1,42 @@
 .price {
     font-size: 20px;
 }
+
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+    .actions {
+        vertical-align: ;
+    }
+    table#cart tbody td .form-control {
+        width: 20%;
+        display: inline !important;
+    }
+    table#cart thead {
+        display: none;
+    }
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+        text-align: left!important;
+    }
+    table#cart tbody tr td:first-child {
+        color: #000000;
+    }
+    table#cart tbody td:before :not(.actions) {
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+    table#cart tfoot td {
+        display: block;
+    }
+    table#cart tfoot td .btn {
+        display: block;
+    }
+}
