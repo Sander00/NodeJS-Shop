@@ -4,6 +4,7 @@ var Cart = require('../models/cart');
 require('dotenv').config();
 
 var Product = require('../models/product');
+var Order = require('../models/order');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -67,11 +68,21 @@ router.get('/charge', function (req, res, next) {
         if (err) {
             req.flash('error', err.message);
             return res.redirect('/checkout');
-        } else {
+        }
+        
+        var order = new Order({
+            user: req.user,
+            cart: cart,
+            name: charge.source.owner.name,
+            address: charge.source.owner.address.line1,
+            paymentId: charge.id
+        });
+
+        order.save(function (err, result) {
             req.flash('success', 'Successfully bought products!');
             req.session.cart = null;
             res.redirect('/');
-        }
+        });
     });
 });
 
