@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Cart = require('../models/cart');
+require('dotenv').config();
 
 var Product = require('../models/product');
 
@@ -55,9 +56,7 @@ router.get('/charge', function (req, res, next) {
     }
     var cart = new Cart(req.session.cart);
 
-    var stripe = require("stripe")(
-        //priv_key
-    );
+    var stripe = require("stripe")(process.env.STRIPE_PRIV);
 
     stripe.charges.create({
         amount: cart.totalPrice * 100,
