@@ -27,9 +27,9 @@
                 <td data-th="Quantity" class="text-center">{{ this.qty }}</td>
                 <td data-th="Subtotal" class="text-center">€{{ this.price }}</td>
                 <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm"><i class="fas fa-minus"></i></button>
+                    <a class="btn btn-info btn-sm" href="/reduce/{{ this.item._id }}"><i class="fas fa-minus"></i></a>
                     <a class="btn btn-info btn-sm" href="/add-to-cart/{{ this.item._id }}"><i class="fas fa-plus"></i></a>
-                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                    <a class="btn btn-danger btn-sm" href="/remove/{{ this.item._id }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {{/each}}
